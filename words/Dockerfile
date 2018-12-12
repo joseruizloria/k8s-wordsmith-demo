@@ -7,12 +7,7 @@ RUN MAVEN_VERSION=3.5.0 \
  && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
-RUN pwd
-ENV MY_HOME "/host_path"
-WORKDIR $MY_HOME
-RUN pwd
-
-#WORKDIR /home/lab
+WORKDIR /home/lab
 
 COPY pom.xml .
 RUN mvn verify -DskipTests --fail-never
